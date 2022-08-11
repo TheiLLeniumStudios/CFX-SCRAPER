@@ -121,6 +121,7 @@ I am *NOT* responsible for any user that **misuses** this tool to promote or tak
 <b>Description:</b> Check the highest rated server and what servers have recommended/non-recommended reviews<br>
 <b>Credits:</b> K3YOMI<br>
 <b>Discord Bot Invite:</b> In Development<br><br>
+<b>Note:</b> I know... I mispelled "Reviewer" (footer) in the images lol<br>
 <table style="background-color: #ccc;">
 <tr>
 <td>
