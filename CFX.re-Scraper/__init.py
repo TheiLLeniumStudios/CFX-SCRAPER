@@ -5,6 +5,8 @@ import datetime
 import requests
 import json
 
+
+
 def RoundError(Status, CurrentIssue, CurrentMS):
     if Status == "All Systems Operational":
         TableStatus['Status'] = "\033[92mAll Systems Operational\033[0m"
@@ -23,7 +25,7 @@ try:
     convertJson = request_get.json()
     convertJsonv2 = request_getv2.json()
     RoundError(convertJson['status']['description'], convertJson['status']['indicator'], round(convertJsonv2['summary']['mean'], 0)  )
-except Exception as e: # Failed to get information (Connectivity issue?)
+except Exception as e:
     TableStatus['Status'] = "\033[91mFailed To Fetch\033[0m"
     TableStatus['CurrentIssue'] = "\033[91mErr\033[0m"
     TableStatus['CurrentMS'] = "\033[91mErr\033[0m"
@@ -48,70 +50,70 @@ _Logo_ = """
 def _searchServerName():
     getRegex = input("Enter the server name (Can be something like 'csrp'): ")
     os.system('cls || clear')
-    os.system("node Javascript/FiveM-API-Server-Name.js " + getRegex)
+    os.system("node Javascript/Node.js " + getRegex + " undefined " + " -Sn") # Server Name
 def _searchServerID():
     getRegex234 = input("Enter the server ID: ")
     os.system('cls || clear')
-    os.system("node Javascript/FiveM-API-Server-ID.js " + getRegex234)
+    os.system("node Javascript/NodeServerID.js " + getRegex234+ " undefined " + " -Sd") # Server ID
 def _searchServerResource():
     getRegex = input("Enter the server resource name: ")
     os.system('cls || clear')
-    os.system("node Javascript/FiveM-API-Server-Resource.js " + getRegex)
+    os.system("node Javascript/Node.js " + getRegex+ " undefined " + " -Rn") # Server Resource Name
 def _searchServerPlayerCount():
     getMin = input("Min Playercount (Example: 5): ")
     getMax = input("Max Playercount (Example: 10): ")
     os.system('cls || clear')
-    os.system("node Javascript/FiveM-API-Server-MinMax.js " + getMin + " " + getMax)
+    os.system("node Javascript/Node.js " + getMin + " " + getMax + " -Pc") # Server Player Count
 def _searchBooleanOneSync():
     getRegex = input("OneSync [true/false]: ")
     os.system('cls || clear')
-    os.system("node Javascript/FiveM-API-Server-OneSync.js " + getRegex)
+    os.system("node Javascript/Node.js " + getRegex + " undefined " + " -O") # OneSync
 def _searchBooleanScriptHook():
     getRegex = input("ScriptHook [true/false]: ")
     os.system('cls || clear')
-    os.system("node Javascript/FiveM-API-Server-ScriptHook.js " + getRegex)
+    os.system("node Javascript/Node.js " + getRegex+ " undefined " + " -S") # ScriptHook
 def _searchBuildVersion():
     getRegex = input("Enter the build version: ")
     os.system('cls || clear')
-    os.system("node Javascript/FiveM-API-BuildVersion.js " + getRegex)
+    os.system("node Javascript/Node.js " + getRegex+ " undefined " + " -B") # Build Version
 def _searchHostType():
     print("[1] Linux")
     print("[2] Windows")
     getRegex = input("Enter your choice: ")
     if getRegex == "1":
         os.system('cls || clear')
-        os.system("node Javascript/FiveM-API-Server-HostType.js linux")
+        os.system("node Javascript/Node.js linux" + " undefined " + " -H") # Host Type
     elif getRegex == "2":
         os.system('cls || clear')
-        os.system("node Javascript/FiveM-API-Server-HostType.js windows")
+        os.system("node Javascript/Node.js windows"+ " undefined " + " -H") # Host Type
 def _searchSupportType():
     print("[1] Support")
     print("[2] No Support")
     getRegex = input("Enter your choice: ")
     if getRegex == "1":
         os.system('cls || clear')
-        os.system("node Javascript/FiveM-API-Server-Support.js supported")
+        os.system("node Javascript/Node.js supported"+ " undefined " + " -Su") # Support Type
     elif getRegex == "2":
         os.system('cls || clear')
-        os.system("node Javascript/FiveM-API-Server-Support.js end_of_support")
+        os.system("node Javascript/Node.js end_of_support"+ " undefined " + " -Su") # Support Type
 def _searchForumID():
     getRegex = input("Enter the forum ID: ")
     os.system('cls || clear')
-    os.system("node Javascript/FiveM-API-Forum.js " + getRegex)
+    os.system("node Javascript/NodeForum.js " + getRegex+ " undefined " + " -F") # Forum ID
 def _searchSteamDecToHex(): # Easy way to convert the steam decimal ID to a link [Base16 Conversion] :D
     getRegex = input("Enter the Steam Decimal: ")
     os.system('cls || clear')
-    os.system("node Javascript/FiveM-API-Steam.js " + getRegex)
+    os.system("node Javascript/NodeSteam.js " + getRegex+ " undefined " + " -D") # Steam Decimal to Hex
 def _runPlayerNameSearch():
     getRegex = input("Enter the player name: ")
     os.system('cls || clear')
-    os.system("node Javascript/FiveM-API-Player-Name.js " + getRegex)
+    os.system("node Javascript/Node.js " + getRegex+ " undefined " + " -Pn") # Player Name
 def _runPlayerIdentifierSearch():
     getRegex = input("Enter the player identifier: ")
     os.system('cls || clear')
-    os.system("node Javascript/FiveM-API-Player-Identifiers.js " + getRegex)
+    os.system("node Javascript/Node.js " + getRegex+ " undefined " + " -Pi") # Player Identifier
 def _scrapeEverything():
-    os.system('node Javascript/FiveM-API-Scrape.js')
+    os.system('node Javascript/Node.js'+ " undefined undefined " + " -Sq") # Scrape Everything
 def _installNodeJS():
    os.system('py Javascript/_install.py')
 
@@ -136,22 +138,26 @@ _ChoicesArray = [  #Low-key pretty smart for doing this method instead of use if
 
 
 def _initChoosen():
-    global CurrentIssue
-    os.system("title " + "CFX.re Scraper - Created by K3YOMI@Github")
-    os.system('cls || clear')
-    print(_Logo_)
-    print(f"[#]\t[Type]\t\t[Action]")
-    print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
-    for x in _ChoicesArray:
-        if (int(x['Choice']) < 10):
-            print(f"[0" + x['Choice'] + "] \t["+x['Type']+"]\t" + x['Name'])
-        else:
-           print(f"[" + x['Choice'] + "] \t["+x['Type']+"]\t" + x['Name'])
-    print('\n')
-    choosen = input("Select an option :: ")
-    for x in _ChoicesArray:
-        if (x['Choice']) == (choosen):
-            x['Function']()
+    try:
+        global CurrentIssue
+        os.system("title " + "CFX.re Scraper - Created by K3YOMI@Github")
+        os.system('cls || clear')
+        print(_Logo_)
+        print(f"[#]\t[Type]\t\t[Action]")
+        print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+        for x in _ChoicesArray:
+            if (int(x['Choice']) < 10):
+                print(f"[0" + x['Choice'] + "] \t["+x['Type']+"]\t" + x['Name'])
+            else:
+               print(f"[" + x['Choice'] + "] \t["+x['Type']+"]\t" + x['Name'])
+        print('\n')
+        choosen = input("Select an option :: ")
+        for x in _ChoicesArray:
+            if (x['Choice']) == (choosen):
+                x['Function']()
+    except KeyboardInterrupt:
+        print("\n[!]\tKeyboardInterrupt detected, exiting...")
+        exit()
 
 _initChoosen()
 
