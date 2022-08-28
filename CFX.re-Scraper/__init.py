@@ -156,7 +156,7 @@ def _initChoosen():
             if (x['Choice']) == (choosen):
                 x['Function']()
     except KeyboardInterrupt:
-        print("\n[!]\tKeyboardInterrupt detected, exiting...")
+        print("\n[!] Exiting...")
         exit()
 
 _initChoosen()
