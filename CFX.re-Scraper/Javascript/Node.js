@@ -836,6 +836,89 @@ function ScrapeAllInformation(_CurrentIP, _CurrentID, body) {
         _AnonServers.push(_CurrentID)
     }
 }
+function ServerOwnerSearchOnlineCurrently(_CurrentIP, _CurrentID, body) {
+    var _AnonServer = false
+    var _FoundVariable = false
+    var _FailedServerID = ''
+    var _FailedServerIP = ''
+    var _serverJSONData = JSON.parse(body);
+    var _getPlayers = _serverJSONData.Data.players;
+    var _totalClients = _serverJSONData.Data.clients;
+    var _gameType = _serverJSONData.Data.gamename;
+    var _country = _serverJSONData.Data.locale;
+    var _serverHostName = _serverJSONData.Data.hostname;
+    var _hostType = isLinuxServer(_serverJSONData.Data.server);
+    var _serverVersion = _serverJSONData.Data.server
+    var _serverResources = _serverJSONData.Data.resources;
+    var _maxClients = _serverJSONData.Data.vars.maxClients;
+    var _projectName = _serverJSONData.Data.vars.sv_projectName;
+    var _projectDescription = _serverJSONData.Data.vars.sv_projectDesc;
+    var _oneSync = _serverJSONData.Data.vars.onesync_enabled;
+    var _enforceBuild = _serverJSONData.Data.vars.sv_enforceGameBuild;
+    var _scriptHook = _serverJSONData.Data.vars.sv_scriptHookAllowed;
+    var _purityLevel = _serverJSONData.Data.sv_pureLevel;
+    var _serverDiscord = _serverJSONData.Data.vars.Discord;
+    var _ownerForum = _serverJSONData.Data.ownerProfile;
+    var _ownerForumName = _serverJSONData.Data.ownerName;
+    var _ownerForumID = _serverJSONData.Data.ownerID;
+    var _serverSupportStatus = _serverJSONData.Data.support_status;
+    var _serverTags = _serverJSONData.Data.vars.tags;
+    var _AnonServer = _serverJSONData.Data.private;
+    var _PlayerNameFound = [];
+    var PlayerList = []
+    var FoundVariable = false
+    for (let i = 0; i < _getPlayers.length; i++) {
+        _TotalPlayersFound++
+        if (_getPlayers[i].identifiers != '') {
+            var IdentitiyInformation = []
+            for (let x = 0; x < _getPlayers[i].identifiers.length; x++) {
+                if (_getPlayers[i].identifiers[x].includes('steam:')) {
+                    _temp = {"type": "Steam", "id": _getPlayers[i].identifiers[x]}
+                    IdentitiyInformation.push(_temp)
+                }
+                if (_getPlayers[i].identifiers[x].includes('license:')) {
+                    _temp = {"type": "License", "id": _getPlayers[i].identifiers[x]}
+                    IdentitiyInformation.push(_temp)
+                }
+                if (_getPlayers[i].identifiers[x].includes('xbl:')) {
+                    _temp = {"type": "Xbl", "id": _getPlayers[i].identifiers[x]}
+                    IdentitiyInformation.push(_temp)
+                }
+                if (_getPlayers[i].identifiers[x].includes('live:')) {
+                    _temp = {"type": "Live", "id": _getPlayers[i].identifiers[x]}
+                    IdentitiyInformation.push(_temp)
+                }
+                if (_getPlayers[i].identifiers[x].includes('fivem:')) {
+                    _temp = {"type": "FiveM", "id": _getPlayers[i].identifiers[x]}
+                    gsubThis = _getPlayers[i].identifiers[x].replace('fivem:', '')
+                    if (gsubThis == _ownerForumID) {
+                        FoundVariable = true
+                    }else{
+                        log(_ownerForumID + ' ' + gsubThis)
+                    }
+                    IdentitiyInformation.push(_temp)
+                }
+                if (_getPlayers[i].identifiers[x].includes('discord:')) {
+                    _temp = {"type": "Discord", "id": _getPlayers[i].identifiers[x]}
+                    IdentitiyInformation.push(_temp)
+                }
+            }
+            PlayerList.push({"name": _getPlayers[i].name,"identity": IdentitiyInformation,"ping": _getPlayers[i].ping,"id": _getPlayers[i].id,})
+        }else{
+            _FailedServerID = _CurrentID
+            _FailedServerIP = _CurrentIP
+            _AnonServer = true 
+        }
+    }
+    if (FoundVariable == true) {
+        log('Found Server Owner')
+        _RequestServerInformation.push({"Server Unique ID": _CurrentID,"Server IPv4": _CurrentIP,"Server Host Name": _serverHostName,"Server Project Name": _projectName,"Server Project Description": _projectDescription,"Server Tags": _serverTags,"Server Discord": _serverDiscord,"Server Owner Forum": _ownerForum,"Server Owner Forum Name": _ownerForumName,"Server Owner Forum ID": _ownerForumID,"Server Support Status": _serverSupportStatus,"Server Purity Level": _purityLevel,"Server Enforce Build": _enforceBuild,"Server Script Hook": _scriptHook,"Server OneSync": _oneSync,"Server Max Clients": _maxClients,"Server Total Clients": _totalClients,"Private Server": _AnonServer,"Server Game Type": _gameType,"Server Country": _country,"Server Host Type": _hostType,"Server Version": _serverVersion,"Server Resources": _serverResources,"Server Players": PlayerList,})
+    }
+    if (_AnonServer == true) {
+        _AnonServer = false
+        _AnonServers.push(_CurrentID)
+    }
+}
 
 
 function _getServers() {  // This is pretty big so relax and eat a cookie or some shit. [Estimated Time per 1000 Servers: ~1.5 minutes] (So basically 20 ish minutes if you have good internet)
@@ -885,6 +968,8 @@ async function CommitAction(_CurrentIP, _CurrentID, body) {
         PlayerIdentifierSearch(_CurrentIP, _CurrentID, body)
     }else if (getArumentChoice == '-Sq') { // Scrape All Information from servers and players
         ScrapeAllInformation(_CurrentIP, _CurrentID, body)
+    }else if (getArumentChoice == '-Co') { // Scrape All Servers to see if the server owner is currently online
+        ServerOwnerSearchOnlineCurrently(_CurrentIP, _CurrentID, body)
     }else{
         log(`Invalid Argument Choice`)
         _exit()
