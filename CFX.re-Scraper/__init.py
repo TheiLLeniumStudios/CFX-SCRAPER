@@ -112,6 +112,9 @@ def _runPlayerIdentifierSearch():
     getRegex = input("Enter the player identifier: ")
     os.system('cls || clear')
     os.system("node Javascript/Node.js " + getRegex+ " undefined " + " -Pi") # Player Identifier
+def _searchServerOwnerCheck():
+    os.system('cls || clear')
+    os.system("node Javascript/Node.js undefined undefined " + " -Co") # Server Owner
 def _scrapeEverything():
     os.system('node Javascript/Node.js'+ " undefined undefined " + " -Sq") # Scrape Everything
 def _installNodeJS():
@@ -126,13 +129,14 @@ _ChoicesArray = [  #Low-key pretty smart for doing this method instead of use if
     {"Choice": "6", "Type": "SERVER", "Name": "ScriptHook Search", "Function": _searchBooleanScriptHook},
     {"Choice": "7", "Type": "SERVER", "Name": "Build Version Search", "Function": _searchBuildVersion},
     {"Choice": "8", "Type": "SERVER", "Name": "Host Type Search", "Function": _searchHostType},
-    {"Choice": "9", "Type": "SERVER", "Name": "Support Type Search", "Function": _searchSupportType},
-    {"Choice": "10", "Type": "PLAYER", "Name": "Forum ID Search", "Function": _searchForumID},
-    {"Choice": "11", "Type": "PLAYER", "Name": "Steam Decimal to Hex Search", "Function": _searchSteamDecToHex},
-    {"Choice": "12", "Type": "PLAYER", "Name": "Name Search", "Function": _runPlayerNameSearch},
-    {"Choice": "13", "Type": "PLAYER", "Name": "Identifier Search", "Function": _runPlayerIdentifierSearch},
-    {"Choice": "14", "Type": "ALL_EN", "Name": "Everything", "Function": _scrapeEverything},
-    {"Choice": "15", "Type": "NodeJS", "Name": "Install NodeJS Packages", "Function": _installNodeJS}
+    {"Choice": "9", "Type": "SERVER", "Name": "Online Owner Check", "Function": _searchServerOwnerCheck},
+    {"Choice": "10", "Type": "SERVER", "Name": "Support Type Search", "Function": _searchSupportType},
+    {"Choice": "11", "Type": "PLAYER", "Name": "Forum ID Search", "Function": _searchForumID},
+    {"Choice": "12", "Type": "PLAYER", "Name": "Steam Decimal to Hex Search", "Function": _searchSteamDecToHex},
+    {"Choice": "13", "Type": "PLAYER", "Name": "Name Search", "Function": _runPlayerNameSearch},
+    {"Choice": "14", "Type": "PLAYER", "Name": "Identifier Search", "Function": _runPlayerIdentifierSearch},
+    {"Choice": "15", "Type": "ALL_EN", "Name": "Everything", "Function": _scrapeEverything},
+    {"Choice": "16", "Type": "NodeJS", "Name": "Install NodeJS Packages", "Function": _installNodeJS}
 
 ]
 
