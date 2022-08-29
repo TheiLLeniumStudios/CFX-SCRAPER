@@ -915,11 +915,9 @@ async function _ExecuteAgain(_CurrentIP, _CurrentID) {
             }
         }
         _TotalServersFinished++
-        log(`Total Private Servers - ${_AnonServers.length}`)
-        log(`Total Failed Servers - ${_TotalFailedRequestes}`)
+        log("\n")
         log(`Total Servers Finished - ${_TotalServersFinished} / ${_TotalServersCached} - ${_TotalFoundByArgument}`)
         log(`Total Players Discovered - ${_TotalPlayersFound}`)
-        log(`Total Offline Servers - ${_TotalOfflineServers}`)
         log(`Total Recovered Servers - ${_TotalRecoveredServers}`)
     });
     if (_CheckFailed == true) {
@@ -949,11 +947,9 @@ async function _Execute() {
                 _CheckFailed = true 
             }
             _TotalServersFinished++
-            log(`Total Private Servers - ${_AnonServers.length}`)
-            log(`Total Failed Servers - ${_TotalFailedRequestes}`)
+            log("\n")
             log(`Total Servers Finished - ${_TotalServersFinished} / ${_TotalServersCached} - ${_TotalFoundByArgument}`)
             log(`Total Players Discovered - ${_TotalPlayersFound}`)
-            log(`Total Offline Servers - ${_TotalOfflineServers}`)
             log(`Total Recovered Servers - ${_TotalRecoveredServers}`)
         });
         if (_CheckFailed == true) {
