@@ -18,6 +18,7 @@ Unlike other scrapers, we offer a base script so you can easily add your own fea
    - Build Version
    - Host Type [Win/Linux]
    - Support Status
+   - Online Owner Check (Currently On Their Server)
 - Player Searching and Converting
    - Player Identifier [Actively on server]
    - Player Name [Actively on server]
