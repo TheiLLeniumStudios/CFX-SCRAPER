@@ -893,8 +893,6 @@ function ServerOwnerSearchOnlineCurrently(_CurrentIP, _CurrentID, body) {
                     gsubThis = _getPlayers[i].identifiers[x].replace('fivem:', '')
                     if (gsubThis == _ownerForumID) {
                         FoundVariable = true
-                    }else{
-                        log(_ownerForumID + ' ' + gsubThis)
                     }
                     IdentitiyInformation.push(_temp)
                 }
