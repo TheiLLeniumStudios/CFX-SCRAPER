@@ -76,7 +76,7 @@ I am *NOT* responsible for any user that **misuses** this tool to promote or tak
 
 
 <details>
-<summary>VVWarden</summary>
+<summary>VVarden</summary>
 <h1 >VVarden <img src="https://user-images.githubusercontent.com/54733885/183677344-6e1ee0e6-7b70-4cf5-92e6-646b829dd4b0.png" height=30; width=30;/></h1>
 <b>Description:</b> A discord bot designed to try and hamper if not entirely prevent leaking, cheating and reselling discords from prospering.<br>
 <b>Credits:</b> BerkieB and mk3ext<br>
