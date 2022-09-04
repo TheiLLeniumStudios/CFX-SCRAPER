@@ -19,6 +19,7 @@ Unlike other scrapers, we offer a base script so you can easily add your own fea
    - Host Type [Win/Linux]
    - Support Status
    - Online Owner Check (Currently On Their Server)
+   - Check what servers use what type of framework [ESX, QBCore, Vrp, etc]
 - Player Searching and Converting
    - Player Identifier [Actively on server]
    - Player Name [Actively on server]
@@ -26,8 +27,29 @@ Unlike other scrapers, we offer a base script so you can easily add your own fea
    - Steam Decimal Converter
 - What else?
   - Scrape all
-  - JSON file to store data. [You can link a database but that requires extra effort on your end]
+  - Custom JSON File / Unix Time JSON File Session Saving!
 
+
+## 🆕 Changelog [September 4th, 2022]
+```
+**ADDED**
+  - Custom File Saving
+  - Random File Saving [No Longer a single default file]
+  - Added Sessions Directory for saving sessions
+  - Check what servers use what type of framework [ESX, QBCore, Vrp, etc]
+
+**REMOVED**
+  - default file saving .json file 
+
+**UPDATED**
+  - UI Overhaul and more intuitive and user friendly
+  - Updated javascript file names
+  - Updated Readme.md
+  - Updated package.json
+  - Updated package-lock.json
+  - Updated installPackages.py to install the correct packages and ignore the warnings (Thanks ChatDisabled!)
+  - Updated __init.py => Core.py
+```
 ## 🔨 Languages Used
 ![PY](https://custom-icon-badges.herokuapp.com/badge/Python-black.svg?logo=python&logoColor=blue)
 ![JS](https://custom-icon-badges.herokuapp.com/badge/Javascript-black.svg?logo=Javascript&logoColor=blue)
@@ -39,10 +61,10 @@ Unlike other scrapers, we offer a base script so you can easily add your own fea
 
 
 ## ⚙️ Configuration and Setup
-  - [Manually] Install *Requests* for NodeJS
-    ```npm install Requests```
-  - Or Run the python script and press 16 and enter to automatically install the package.
-  
+  - [Manually] Install *request* for NodeJS
+    ```npm install request```
+  - Or Run the python script and press **17** and enter to automatically install the package.
+  - Also, please stay in the *CFX.re-Scraper* directory unless you know what you are doing. (If you are running via python *NOT* Commands)
   
   
 ## ❌ Requirments
