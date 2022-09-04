@@ -6,8 +6,7 @@
 <a href="https://discordapp.com/users/359794704847601674"><img src="https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white" alt="Kiyomi#9081" ></a>
 
 ## ❌ Description
-CFX.re Scraping - Extract information regarding players, server resources, server names, and more!
-Unlike other scrapers, we offer a base script so you can easily add your own features. Have fun!
+CFX.re Scraping - Extract information regarding players, server resources, server names, and more! 
 - Server Searching
    - Name
    - Unique ID
