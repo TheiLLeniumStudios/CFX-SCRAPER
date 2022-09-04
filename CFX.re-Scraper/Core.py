@@ -168,9 +168,9 @@ def _initChoosen():
         print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
         for x in _ChoicesArray:
             if (int(x['Choice']) < 10):
-                print(f"[0" + x['Choice'] + "] \t["+x['Type']+"]\t" + x['Name']+'\n')
+                print(f"[0" + x['Choice'] + "] \t["+x['Type']+"]\t" + x['Name']+'')
             else:
-               print(f"[" + x['Choice'] + "] \t["+x['Type']+"]\t" + x['Name']+'\n')
+               print(f"[" + x['Choice'] + "] \t["+x['Type']+"]\t" + x['Name']+'')
         print('\n')
         choosen = input("Select an option :: ")
         for x in _ChoicesArray:
