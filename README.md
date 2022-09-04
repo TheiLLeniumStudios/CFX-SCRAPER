@@ -41,7 +41,7 @@ Unlike other scrapers, we offer a base script so you can easily add your own fea
 ## ⚙️ Configuration and Setup
   - [Manually] Install *Requests* for NodeJS
     ```npm install Requests```
-  - Or Run the python script and press 15 and enter to automatically install the package.
+  - Or Run the python script and press 16 and enter to automatically install the package.
   
   
   
