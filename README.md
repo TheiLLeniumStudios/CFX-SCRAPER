@@ -28,6 +28,7 @@ Unlike other scrapers, we offer a base script so you can easily add your own fea
 - What else?
   - Scrape all
   - Custom JSON File / Unix Time JSON File Session Saving!
+  - CFX API Status
 
 
 ## 🆕 Changelog [September 4th, 2022]
