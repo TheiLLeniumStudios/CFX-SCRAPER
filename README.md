@@ -74,7 +74,9 @@ CFX.re Scraping - Extract information regarding players, server resources, serve
 
 
 ## ❌ Disclaimer
-I am *NOT* responsible for any user that **misuses** this tool to promote or take action upon a user. :)
+I am *NOT* responsible for any user that **misuses** this tool. In addition, all of this information was provided by the **CFX.re API** and is all **PUBLIC**.
+This is just a tool that used that information and organized those contents for any user that wishes to use this tool. If you have any questions/concerns
+regarding this disclaimer, feel free to email me *@chevybot123@gmail.com*.
 
 # 🌍 Related Projects / Topics 
 <details>
