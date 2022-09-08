@@ -40,7 +40,6 @@ _Logo_ = """
              ██████ ██      ██   ██ ██ ██   ██ ███████     ███████  ██████ ██   ██ ██   ██ ██      ███████ ██   ██       
                                                                                                   
                                              Created by K3YOMI@github [RABBIT.hak5]
-                                 I am not responsible for any damage caused by this tool.
 
                                       [Cfx.re Status] """+TableStatus['Status']+""" - """+TableStatus['CurrentIssue']+"""
                                             [CnL Self Time] """+str(TableStatus['CurrentMS'])+""" milliseconds                                                                                                                    
