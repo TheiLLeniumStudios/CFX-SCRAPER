@@ -8,47 +8,41 @@
 ## ❌ Description
 CFX.re Scraping - Extract information regarding players, server resources, server names, and more! 
 - Server Searching
-   - Name
-   - Unique ID
-   - Resources
-   - Min/Max Concurrent Player Count
-   - OneSync
-   - Scripthook
-   - Build Version
-   - Host Type [Win/Linux]
-   - Support Status
-   - Online Owner Check (Currently On Their Server)
-   - Check what servers use what type of framework [ESX, QBCore, Vrp, etc]
-- Player Searching and Converting
-   - Player Identifier [Actively on server]
-   - Player Name [Actively on server]
-   - FiveM Identifer to Forum information [Includes link, and profile name)
-   - Steam Decimal Converter
-- What else?
-  - Scrape all
-  - Custom JSON File / Unix Time JSON File Session Saving!
-  - CFX API Status
+   - Project Name (Server Name)
+   - Project Unique Identifier (5-6 Digit Code)
+   - Recommendation (Server Reviews) [Reviewer]
+   - Resource Finder (ex. qb-anticheat)
+   - Real Name Check (Per Server)
+   - Framework (esx, vrp, qbcore, etc)
+   - Build Version (ex. 2372) 
+   - ScriptHook (True/False)
+   - Host Check (Linux / Windows)
+   - OneSync (True/False)
+   - Owner Activity Check (Currently connected to their own server)
+   - Supported (end_of_support / supported)
+- Player Searching
+   - Forum Search (Unique FiveM ID)
+   - Steam Decimal => Link
+   - Search by Name
+   - Search by Identifiers (FiveM, License, XBL, Live, Discord, etc)
+- Misc
+   - Scrape all Players
+   - Scrape all Servers + Players
+   - Install packages (Easily)
 
 
-## 🆕 Changelog [September 4th, 2022]
+## 🆕 Changelog [September 21st, 2022]
 ```
-**ADDED**
-  - Custom File Saving
-  - Random File Saving [No Longer a single default file]
-  - Added Sessions Directory for saving sessions
-  - Check what servers use what type of framework [ESX, QBCore, Vrp, etc]
+ADDED
+    - Recommendations Check [Server ID]
+    - Player Real Name Check [Server ID]
+    - Batch File (Python Start)
+REMOVED
+    - old Method of picking an option
 
-**REMOVED**
-  - default file saving .json file 
-
-**UPDATED**
-  - UI Overhaul and more intuitive and user friendly
-  - Updated javascript file names
-  - Updated Readme.md
-  - Updated package.json
-  - Updated package-lock.json
-  - Updated installPackages.py to install the correct packages and ignore the warnings (Thanks ChatDisabled!)
-  - Updated __init.py => Core.py
+UPDATED
+    - Option Method [Much Much Better]
+    - Improved some code
 ```
 ## 🔨 Languages Used
 ![PY](https://custom-icon-badges.herokuapp.com/badge/Python-black.svg?logo=python&logoColor=blue)
