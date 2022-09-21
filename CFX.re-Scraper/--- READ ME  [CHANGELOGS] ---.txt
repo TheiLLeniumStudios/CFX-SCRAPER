@@ -1,0 +1,11 @@
+ADDED
+    - Recommendations Check [Server ID]
+    - Player Real Name Check [Server ID]
+    - Batch File (Python Start)
+REMOVED
+    - old Method of picking an option
+
+UPDATED
+    - Option Method [Much Much Better]
+    - Improved some code
+
