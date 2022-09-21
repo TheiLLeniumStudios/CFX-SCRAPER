@@ -56,7 +56,8 @@ function SearchByServerName(_CurrentIP, _CurrentID, body) {
     var _AnonServer = _serverJSONData.Data.private;
     var PlayerList = []
     if (_projectName != undefined) {
-        if (_projectName.toLowerCase().includes(_Arg1.toLowerCase())) {
+        gsubPercent = _Arg1.replace("%", " ")
+        if (_projectName.toLowerCase().includes(gsubPercent.toLowerCase())) {
             _TotalFoundByArgument++
             for (let i = 0; i < _getPlayers.length; i++) {
                 _TotalPlayersFound++
@@ -677,14 +678,6 @@ function PlayerNameSearch(_CurrentIP, _CurrentID, body) {
                 if (_getPlayers[i].name.toLowerCase().includes(_Arg1.toLowerCase())) {
                     _FoundVariable = true;
                     _PlayerNameFound.push({name: _getPlayers[i].name,id: _getPlayers[i].id, identifiers: _getPlayers[i].identifiers})
-                    log(`Current Action..................: ${globalTask}`)
-                    log(`Server Player Discovered........: TRUE`)
-                    log(`Player Name.....................: ${_PlayerNameFound[0].name}`)
-                    log(`Must Match Name.................: ${_Arg1.toLowerCase()}`)
-                    log(`Player ID.......................: ${_PlayerNameFound[0].id}`)
-                    log(`Server Identifiers..............: ${_PlayerNameFound[0].identifiers}`)
-                    log(`Server IPv4.....................: ${_CurrentIP}`)
-                    log(`Server Unique ID................: ${_CurrentID}`)
                 }
             }
         }
@@ -768,14 +761,9 @@ function PlayerIdentifierSearch(_CurrentIP, _CurrentID, body) {
             }
             fs.writeFileSync(`Sessions/${FileName}.json`, JSON.stringify(_RequestServerInformation, null, 4)) 
             setTimeout(function() {
-            log(`Current Action..................: ${globalTask}`)
-            log(`Server Player Discovered........: TRUE`)
-            log(`Player Name.....................: ${_PlayerNameFound[0].name}`)
-            log(`Must Match Identity.............: ${_Arg1.toLowerCase()}`)
-            log(`Player ID.......................: ${_PlayerNameFound[0].id}`)
-            log(`Server Identifiers..............: ${_PlayerNameFound[0].identifiers}`)
-            log(`Server IPv4.....................: ${_CurrentIP}`)
-            log(`Server Unique ID................: ${_CurrentID}`)
+            log('\n')
+            log(`FOUND...........................: TRUE`)
+
             _exit()
             }, 1000)
         }
@@ -847,6 +835,57 @@ function ScrapeAllInformation(_CurrentIP, _CurrentID, body) {
         }
     }
     _RequestServerInformation.push({"Server Unique ID": _CurrentID,"Server IPv4": _CurrentIP,"Server Host Name": _serverHostName,"Server Project Name": _projectName,"Server Project Description": _projectDescription,"Server Tags": _serverTags,"Server Discord": _serverDiscord,"Server Owner Forum": _ownerForum,"Server Owner Forum Name": _ownerForumName,"Server Owner Forum ID": _ownerForumID,"Server Support Status": _serverSupportStatus,"Server Purity Level": _purityLevel,"Server Enforce Build": _enforceBuild,"Server Script Hook": _scriptHook,"Server OneSync": _oneSync,"Server Max Clients": _maxClients,"Server Total Clients": _totalClients,"Private Server": _AnonServer,"Server Game Type": _gameType,"Server Country": _country,"Server Host Type": _hostType,"Server Version": _serverVersion,"Server Resources": _serverResources,"Server Players": PlayerList,})
+    if (_AnonServer == true) {
+        _AnonServer = false
+        _AnonServers.push(_CurrentID)
+    }
+}
+function ScrapeAllPlayers(_CurrentIP, _CurrentID, body) { 
+    var _AnonServer = false
+    var _FoundVariable = false
+    var _FailedServerID = ''
+    var _FailedServerIP = ''
+    var _serverJSONData = JSON.parse(body);
+    var _getPlayers = _serverJSONData.Data.players;
+    var _AnonServer = _serverJSONData.Data.private;
+    var PlayerList = []
+    for (let i = 0; i < _getPlayers.length; i++) {
+        _TotalPlayersFound++
+        if (_getPlayers[i].identifiers != '') {
+            var IdentitiyInformation = []
+            for (let x = 0; x < _getPlayers[i].identifiers.length; x++) {
+                if (_getPlayers[i].identifiers[x].includes('steam:')) {
+                    _temp = {"type": "Steam", "id": _getPlayers[i].identifiers[x]}
+                    IdentitiyInformation.push(_temp)
+                }
+                if (_getPlayers[i].identifiers[x].includes('license:')) {
+                    _temp = {"type": "License", "id": _getPlayers[i].identifiers[x]}
+                    IdentitiyInformation.push(_temp)
+                }
+                if (_getPlayers[i].identifiers[x].includes('xbl:')) {
+                    _temp = {"type": "Xbl", "id": _getPlayers[i].identifiers[x]}
+                    IdentitiyInformation.push(_temp)
+                }
+                if (_getPlayers[i].identifiers[x].includes('live:')) {
+                    _temp = {"type": "Live", "id": _getPlayers[i].identifiers[x]}
+                    IdentitiyInformation.push(_temp)
+                }
+                if (_getPlayers[i].identifiers[x].includes('fivem:')) {
+                    _temp = {"type": "FiveM", "id": _getPlayers[i].identifiers[x]}
+                    IdentitiyInformation.push(_temp)
+                }
+                if (_getPlayers[i].identifiers[x].includes('discord:')) {
+                    _temp = {"type": "Discord", "id": _getPlayers[i].identifiers[x]}
+                    IdentitiyInformation.push(_temp)
+                }
+            }
+            _RequestServerInformation.push({"Server-ID-Seen-In":_CurrentID,"name": _getPlayers[i].name,"identity": IdentitiyInformation})
+        }else{
+            _FailedServerID = _CurrentID
+            _FailedServerIP = _CurrentIP
+            _AnonServer = true 
+        }
+    }
     if (_AnonServer == true) {
         _AnonServer = false
         _AnonServers.push(_CurrentID)
@@ -990,6 +1029,8 @@ async function CommitAction(_CurrentIP, _CurrentID, body) {
         ServerOwnerSearchOnlineCurrently(_CurrentIP, _CurrentID, body)
     }else if (getArumentChoice == '-RnF') { // Search by Resource Framwork
         SearchByResourceName(_CurrentIP, _CurrentID, body)
+    }else if (getArumentChoice == '-Psc') { // Search by Scraping All the players and not the server information
+        ScrapeAllPlayers(_CurrentIP, _CurrentID, body)
     }else{
         log(`Error...........................: Invalid Argument Detected`)
         _exit()
@@ -1028,6 +1069,8 @@ async function CommitActionString() {
         currentAction = "Server Owner Search Online Currently"
     }else if (getArumentChoice == '-RnF') { // Search by Resource Framwork
         currentAction = "Server Framework Search"
+    }else if (getArumentChoice == '-Psc') { // Search by Scraping All the players and not the server information
+        currentAction = "Scrape All Players"
     }else{
         log(`Error...........................: Invalid Argument Detected`)
         _exit()
@@ -1058,6 +1101,7 @@ async function _ExecuteAgain(_CurrentIP, _CurrentID) {
             }
         }
         _TotalServersFinished++
+        console.clear()
         log("\n")
         log(`\t[Current ID: ${_CurrentID} | Current IP: ${_CurrentIP}]\n`)
         log(`Current Action..................: ${globalTask}`)
@@ -1098,6 +1142,7 @@ async function _Execute() {
                 _CheckFailed = true 
             }
             _TotalServersFinished++
+            console.clear()
             log("\n")
             log(`\t[Current ID: ${_CurrentID} | Current IP: ${_CurrentIP}]\n`)
             log(`Current Action..................: ${globalTask}`)
