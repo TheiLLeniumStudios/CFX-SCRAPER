@@ -420,7 +420,7 @@ def questionInput(data):
 def _initChoosen():
     try:
         global CurrentIssue
-        os.system("title " + "Test CFX.re Scraper - Created by K3YOMI@Github")
+        os.system("title " + "CFX.re Scraper - Created by K3YOMI@Github")
         os.system('cls || clear')
         print(_Logo_)
         print(f"[#]\t[Type]\t\t[Action]")
