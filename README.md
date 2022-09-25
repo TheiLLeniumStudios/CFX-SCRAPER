@@ -55,7 +55,7 @@ UPDATED
 
 
 ## ⚙️ Configuration and Setup
-  - If you are new to python and you (pip) is not working. Get the directory your python install (ex. C:\Python34\Scripts) and run this command
+  - If you are new to python and your (pip) package install is not working. Get the directory to your python install (ex. C:\Python34\Scripts) and run this command
   ```setx PATH "%PATH%;C:\Python34\Scripts"```
   - [Manually] Install *request* for NodeJS
     ```npm install request```
