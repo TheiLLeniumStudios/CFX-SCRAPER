@@ -56,7 +56,7 @@ function SearchByServerName(_CurrentIP, _CurrentID, body) {
     var _AnonServer = _serverJSONData.Data.private;
     var PlayerList = []
     if (_projectName != undefined) {
-        gsubPercent = _Arg1.replace("%", " ")
+        gsubPercent = _Arg1.replaceAll("%", " ")
         if (_projectName.toLowerCase().includes(gsubPercent.toLowerCase())) {
             _TotalFoundByArgument++
             for (let i = 0; i < _getPlayers.length; i++) {
@@ -655,7 +655,6 @@ function PlayerNameSearch(_CurrentIP, _CurrentID, body) {
     var _serverHostName = _serverJSONData.Data.hostname;
     var _hostType = isLinuxServer(_serverJSONData.Data.server);
     var _serverVersion = _serverJSONData.Data.server
-    var _serverResources = _serverJSONData.Data.resources;
     var _maxClients = _serverJSONData.Data.vars.maxClients;
     var _projectName = _serverJSONData.Data.vars.sv_projectName;
     var _projectDescription = _serverJSONData.Data.vars.sv_projectDesc;
@@ -671,7 +670,6 @@ function PlayerNameSearch(_CurrentIP, _CurrentID, body) {
     var _serverTags = _serverJSONData.Data.vars.tags;
     var _AnonServer = _serverJSONData.Data.private;
     var _PlayerNameFound = [];
-    var PlayerList = []
     if (_projectName != undefined) {
         if (_AnonServer == false) {
             for (let i = 0; i < _getPlayers.length; i++) {
@@ -714,7 +712,6 @@ function PlayerIdentifierSearch(_CurrentIP, _CurrentID, body) {
     var _serverHostName = _serverJSONData.Data.hostname;
     var _hostType = isLinuxServer(_serverJSONData.Data.server);
     var _serverVersion = _serverJSONData.Data.server
-    var _serverResources = _serverJSONData.Data.resources;
     var _maxClients = _serverJSONData.Data.vars.maxClients;
     var _projectName = _serverJSONData.Data.vars.sv_projectName;
     var _projectDescription = _serverJSONData.Data.vars.sv_projectDesc;
@@ -730,7 +727,6 @@ function PlayerIdentifierSearch(_CurrentIP, _CurrentID, body) {
     var _serverTags = _serverJSONData.Data.vars.tags;
     var _AnonServer = _serverJSONData.Data.private;
     var _PlayerNameFound = [];
-    var PlayerList = []
     if (_projectName != undefined) {
         if (_AnonServer == false) {
             for (let i = 0; i < _getPlayers.length; i++) {
@@ -891,6 +887,8 @@ function ScrapeAllPlayers(_CurrentIP, _CurrentID, body) {
         _AnonServers.push(_CurrentID)
     }
 }
+
+
 function ServerOwnerSearchOnlineCurrently(_CurrentIP, _CurrentID, body) {
     var _AnonServer = false
     var _FoundVariable = false
@@ -1042,35 +1040,35 @@ async function CommitActionString() {
     var getArumentChoice = _Arg3
     var currentAction = 'N/A'
     if (getArumentChoice == '-Sn') { // Search by Server Name
-        currentAction = "Server Name Search"
+        currentAction = "Server-Name-Search"
     }else if (getArumentChoice == '-Sd') { // Search by Server ID
-        currentAction = "Server ID Search"
+        currentAction = "Server-ID-Search"
     }else if (getArumentChoice == '-Rn') { // Search by ResourceName
-        currentAction = "Resource Name Search"
+        currentAction = "Resource-Name-Search"
     }else if (getArumentChoice == '-Pc') { // Search by Player Count
-        currentAction = "Player Count Search"
+        currentAction = "Player-Count-Search"
     }else if (getArumentChoice == '-O') { // Search by OneSync Boolean
-        currentAction = "OneSync Search"
+        currentAction = "OneSync-Search"
     }else if (getArumentChoice == '-S') { // Search by Scripthook Boolean
-        currentAction = "Scripthook Search"
+        currentAction = "Scripthook-Search"
     }else if (getArumentChoice == '-B') { // Search by Build Version
-        currentAction = "Build Version Search"
+        currentAction = "Build-Version-Search"
     }else if (getArumentChoice == '-H') { // Search by Host Type
-        currentAction = "Host Type Search"
+        currentAction = "Host-Type-Search"
     }else if (getArumentChoice == '-Su') { // Search by Support Type Boolean
-        currentAction = "Support Type Search"
+        currentAction = "Support-Type-Search"
     }else if (getArumentChoice == '-Pn') { // Player Name Searching [Only Live Data]
-        currentAction = "Player Name Search"
+        currentAction = "Player-Name-Search"
     }else if (getArumentChoice == '-Pi') { // Player Identifier Searching [Only Live Data]
-        currentAction = "Player Identifier Search"
+        currentAction = "Player-Identifier-Search"
     }else if (getArumentChoice == '-Sq') { // Scrape All Information from servers and players
-        currentAction = "Scrape All Information"
+        currentAction = "Scrape-All-Information"
     }else if (getArumentChoice == '-Co') { // Scrape All Servers to see if the server owner is currently online
-        currentAction = "Server Owner Search Online Currently"
+        currentAction = "Server-Owner-Search-Online-Currently"
     }else if (getArumentChoice == '-RnF') { // Search by Resource Framwork
-        currentAction = "Server Framework Search"
+        currentAction = "Server-Framework-Search"
     }else if (getArumentChoice == '-Psc') { // Search by Scraping All the players and not the server information
-        currentAction = "Scrape All Players"
+        currentAction = "Scrape-All-Players"
     }else{
         log(`Error...........................: Invalid Argument Detected`)
         _exit()
