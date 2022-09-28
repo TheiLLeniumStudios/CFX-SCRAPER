@@ -26,23 +26,18 @@ CFX.re Scraping - Extract information regarding players, server resources, serve
    - Search by Name
    - Search by Identifiers (FiveM, License, XBL, Live, Discord, etc)
 - Misc
+   - Mass Real Name Check (By File)
    - Scrape all Players
    - Scrape all Servers + Players
+   - CFX.re Stats Show
    - Install packages (Easily)
 
 
-## 🆕 Changelog [September 21st, 2022]
+## 🆕 Changelog [September 27th, 2022]
 ```
 ADDED
-    - Recommendations Check [Server ID]
-    - Player Real Name Check [Server ID]
-    - Batch File (Python Start)
-REMOVED
-    - old Method of picking an option
-
-UPDATED
-    - Option Method [Much Much Better]
-    - Improved some code
+    - Real Name Check (MASS CHECK)
+    - CFX.re Status and Updates Alerting
 ```
 ## 🔨 Languages Used
 ![PY](https://custom-icon-badges.herokuapp.com/badge/Python-black.svg?logo=python&logoColor=blue)
@@ -59,7 +54,7 @@ UPDATED
   ```setx PATH "%PATH%;C:\Python34\Scripts"```
   - [Manually] Install *request* for NodeJS
     ```npm install request```
-  - Or Run the python script and press **17** and enter to automatically install the package.
+  - Or Run the python script and press **22** and enter to automatically install the package.
   - Also, please stay in the *CFX.re-Scraper* directory unless you know what you are doing. (If you are running via python *NOT* Commands)
   
   
