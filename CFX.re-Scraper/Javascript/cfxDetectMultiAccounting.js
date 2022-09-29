@@ -45,7 +45,6 @@ async function readFileData(tempFileName) {
         }
     }
     const occurrences = Idenrtifiers.reduce(function (acc, curr) {
-        // Only return the keys that have a value of 2 or more
         if (acc[curr]) {
             acc[curr] = acc[curr] + 1;
         } else {
@@ -56,7 +55,6 @@ async function readFileData(tempFileName) {
     var globalVars = []
     for (x in occurrences) {
         if (occurrences[x] > 1) {
-            // Find the users that have the same identifier and add them to the custom arrays within the occurrences object
             for (let i = 0; i < IdentifiersKnown.length; i++) {
                 for (let xd = 0; xd < IdentifiersKnown[i].Identifiers.length; xd++) {
                     var Identifiers = []
@@ -65,6 +63,7 @@ async function readFileData(tempFileName) {
                     if (IdentifiersKnown[i].Identifiers[xd].id == x) {
                         if (!globalVars.includes(IdentifiersKnown[i].Identifiers)) {
                             globalVars.push(IdentifiersKnown[i].Identifiers)
+                            _TotalPlayersFound++;
                             if (!ServersFound.includes(IdentifiersKnown[i].Server)) {
                                 ServersFound.push(IdentifiersKnown[i].Server)
                             }
@@ -72,6 +71,7 @@ async function readFileData(tempFileName) {
                             for (let cddd = 0; cddd < IdentifiersKnown[i].Identifiers.length; cddd++) {
                                 if (!Identifiers.includes(IdentifiersKnown[i].Identifiers[cddd].id)) {
                                     Identifiers.push(IdentifiersKnown[i].Identifiers[cddd].id)
+                                    _TotalFailedRequestes++;
                                 }
                             }
                         }
@@ -79,6 +79,7 @@ async function readFileData(tempFileName) {
                             for (let xd2 = 0; xd2 < IdentifiersKnown[i2].Identifiers.length; xd2++) {
                                 if (IdentifiersKnown[i2].Identifiers[xd2].id == x) {
                                     if (!globalVars.includes(IdentifiersKnown[i2].Identifiers)) {
+                                        _TotalPlayersFound++;
                                         globalVars.push(IdentifiersKnown[i2].Identifiers)
                                         if (!ServersFound.includes(IdentifiersKnown[i2].Server)) {
                                             ServersFound.push(IdentifiersKnown[i2].Server)
@@ -87,6 +88,7 @@ async function readFileData(tempFileName) {
                                         for (let cddd2 = 0; cddd2 < IdentifiersKnown[i2].Identifiers.length; cddd2++) {
                                             if (!Identifiers.includes(IdentifiersKnown[i2].Identifiers[cddd2].id)) {
                                                 Identifiers.push(IdentifiersKnown[i2].Identifiers[cddd2].id)
+                                                _TotalFailedRequestes++;
                                             }
                                         }
                                     }
@@ -94,17 +96,13 @@ async function readFileData(tempFileName) {
                             }
                         }
                         if (Identifiers.length > 0) {
-                            var _data = {
-                                "Identifiers Used": Identifiers,
-                                "Usernames": NamesFound,
-                                "Server": ServersFound,
-                                "Total Identifiers": Identifiers.length,
-                                "Occurences": occurrences[x],
-                                'Triggered Identifiers': x,
-
-                            }
-                            // Check if names have already been added to the global array
+                            var _data = {"Identifiers Used": Identifiers,"Usernames": NamesFound,"Server": ServersFound,"Total Identifiers": Identifiers.length,"Occurences": occurrences[x],'Triggered Identifiers': x,}
                             _RequestServerInformation.push(_data)
+                            console.clear()
+                            log("\n")
+                            log(`Current Action..................: File To Multi-Account Scan`)
+                            log(`Total Multi Accounts Found......: ${_TotalPlayersFound}`)
+                            log(`Total Identifiers Logged........: ${_TotalFailedRequestes}`)
                         }
                     }
                 }
@@ -112,9 +110,6 @@ async function readFileData(tempFileName) {
         }
     }
 }
-//                var _data = {"Using Identifiers": IdentifiersKnown[x].Identifiers ,"Username": IdentifiersKnown[x].Name}
-//                _RequestServerInformation.push(_data)
-
 
 const readline = require('readline').createInterface({
     input: process.stdin,
