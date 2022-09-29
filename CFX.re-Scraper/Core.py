@@ -501,6 +501,24 @@ choicesArray = [
     },
     {
     "Choice": "20",
+    "Type": "PLAYER",
+    "RunAs": "node",
+    "Name": "(PLAYER SCRAPE FILE => DETECT MULTI-ACCOUNTS)",
+    "Path": "Javascript/cfxDetectMultiAccounting.js",
+    "Input Required": True,
+    "Multiple Input": False,
+    "Input Question": "File Name To Scan [Must be part of the 'Player Scrape All' Action]",
+    "Input Question 2": "N/A",
+    "Dynamic Choice": False,
+    "Internal": False,
+    "Internal Function": "N/A",
+    "Dynamic Value": "-PscM",
+        "Choices": [
+            {"Choice": "1", "Name": "Press [1] To Continue", "Value": "undefined"},
+        ]
+    },
+    {
+    "Choice": "21",
     "Type": "ALL_EN",
     "RunAs": "node",
     "Name": "(SCRAP EVERYTHING)",
@@ -518,7 +536,7 @@ choicesArray = [
         ]
     },
     {
-    "Choice": "21",
+    "Choice": "22",
     "Type": "ALL_ST",
     "RunAs": "N/A",
     "Name": "(VIEW CFX STATISTICS)",
@@ -536,7 +554,7 @@ choicesArray = [
         ]
     },
     {
-    "Choice": "22",
+    "Choice": "23",
     "Type": "NODEJS",
     "RunAs": "py",
     "Name": "(INSTALL PACKAGES)",
