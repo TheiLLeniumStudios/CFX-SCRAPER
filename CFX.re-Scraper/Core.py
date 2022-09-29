@@ -22,6 +22,13 @@ TableStatus = {
 
     
     }
+def installPackages():
+    print("[" + time.strftime("%H:%M:%S") + "] Installing [Request] Package")
+    os.system('npm i request --prefix ./Javascript') # Fixed Requests => Request [Must run in the __init.py dir)
+    os.system('cls || clear')
+    print("[" + time.strftime("%H:%M:%S") + "] Ignore the [npm WARN] messages. They are not important.") # Ignore the log messages within the npm install
+    print("[" + time.strftime("%H:%M:%S") + "] Finished Installing [Request] Package")
+    print("[" + time.strftime("%H:%M:%S") + "] Finished Install Process, you may now use the tool")
 def checkStatus(Status, CurrentIssue, CurrentMS):
     if Status == "All Systems Operational":
         TableStatus['cfxStatus'] = "\033[92mAll Systems Operational\033[0m"
@@ -556,19 +563,19 @@ choicesArray = [
     {
     "Choice": "23",
     "Type": "NODEJS",
-    "RunAs": "py",
+    "RunAs": "N/A",
     "Name": "(INSTALL PACKAGES)",
-    "Path": "Javascript/installPackages.py",
+    "Path": "N/A",
     "Input Required": False,
     "Multiple Input": False,
     "Input Question": "N/A",
     "Input Question 2": "N/A",
-    "Dynamic Choice": True,
-    "Internal": False,
-    "Internal Function": "N/A",
-    "Dynamic Value": "-Sq",
+    "Dynamic Choice": False,
+    "Internal": True,
+    "Internal Function": installPackages,
+    "Dynamic Value": "N/A",
         "Choices": [
-            {"Choice": "1", "Name": "Press [1] To Install", "Value": "undefined"},
+            {"Choice": "1", "Name": "N/A", "Value": "undefined"},
         ]
     },
 ]
