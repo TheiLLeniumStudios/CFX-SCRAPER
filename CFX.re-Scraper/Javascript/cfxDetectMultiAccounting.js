@@ -10,7 +10,6 @@ function isLinuxServer(string) { if (string.indexOf('win32') > -1) {    return "
 function log(string) { console.log(string);}
 function _exit() {process.exit();}
 function _delay(ms) { return new Promise(resolve => setTimeout(resolve, ms));}
-function _saveArray() { fs.writeFileSync(`Sessions/${FileName}.json`, JSON.stringify(_RequestServerInformation, null, 4));setTimeout(_saveArray, 1000 * 2);}
 
 var _ServerCache = [] // Cache the servers from the FiveM-API
 var _RequestServerInformation = [] // Cache the servers from the FiveM-API we already searched
@@ -103,6 +102,7 @@ async function readFileData(tempFileName) {
                             log(`Current Action..................: File To Multi-Account Scan`)
                             log(`Total Multi Accounts Found......: ${_TotalPlayersFound}`)
                             log(`Total Identifiers Logged........: ${_TotalFailedRequestes}`)
+                            fs.writeFileSync(`Sessions/${FileName}.json`, JSON.stringify(_RequestServerInformation, null, 4));
                         }
                     }
                 }
@@ -120,11 +120,9 @@ readline.question('Want to add a custom save file? [N/y] - ', booleanTest => {
         readline.question('What is the name of the file? - ', FileNameInput => {
             FileName = FileNameInput
             readline.close();
-            _saveArray()
             readFileData(_Arg1)
         });
     }else{
-        _saveArray()
         readFileData(_Arg1)
     }
 });
