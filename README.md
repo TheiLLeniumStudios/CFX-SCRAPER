@@ -27,6 +27,7 @@ CFX.re Scraping - Extract information regarding players, server resources, serve
    - Search by Identifiers (FiveM, License, XBL, Live, Discord, etc)
 - Misc
    - Mass Real Name Check (By File)
+   - Mass Multi-Account Check (By File)
    - Scrape all Players
    - Scrape all Servers + Players
    - CFX.re Stats Show
@@ -64,7 +65,7 @@ UPDATED
   ```setx PATH "%PATH%;C:\Python34\Scripts"```
   - [Manually] Install *request* for NodeJS
     ```npm install request```
-  - Or Run the python script and press **22** and enter to automatically install the package.
+  - Or Run the python script and press **23** and enter to automatically install the package.
   - Also, please stay in the *CFX.re-Scraper* directory unless you know what you are doing. (If you are running via python *NOT* Commands)
   
   
