@@ -33,7 +33,7 @@ CFX.re Scraping - Extract information regarding players, server resources, serve
    - Install packages (Easily)
 
 
-## 🆕 Latest Changelog [September 27th, 2022] (v3.2)
+## 🆕 Latest Changelog [September 28th, 2022] (v3.2.5)
 ```
 ADDED
 - Recommendations Check [Server ID]
@@ -41,6 +41,7 @@ ADDED
 - Batch File (Python Start)
 - Real Name Check (MASS CHECK)
 - CFX.re Status and Updates Alerting
+- Check for multi-accounts (Multiple accounts with same identifiers)
 REMOVED
 - old Method of picking an option
 
