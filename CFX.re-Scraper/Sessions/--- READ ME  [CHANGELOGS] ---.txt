@@ -1,0 +1,14 @@
+ADDED
+- Recommendations Check [Server ID]
+- Player Real Name Check [Server ID]
+- Batch File (Python Start)
+- Real Name Check (MASS CHECK)
+- CFX.re Status and Updates Alerting
+- Check for multi-accounts (Multiple accounts with same identifiers)
+REMOVED
+- old Method of picking an option
+
+UPDATED
+- Option Method [Much Much Better]
+- Improved some code
+- Fixed Errs Occuring during scrape (Not defined)
