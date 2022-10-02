@@ -34,21 +34,15 @@ CFX.re Scraping - Extract information regarding players, server resources, serve
    - Install packages (Easily)
 
 
-## 🆕 Latest Changelog [September 28th, 2022] (v3.2.5)
+## 🆕 Latest Changelog [Oct, 2nd 2022] (v3.6.7)
 ```
 ADDED
-- Recommendations Check [Server ID]
-- Player Real Name Check [Server ID]
-- Batch File (Python Start)
-- Real Name Check (MASS CHECK)
-- CFX.re Status and Updates Alerting
-- Check for multi-accounts (Multiple accounts with same identifiers)
+- Better CFX Stats
 REMOVED
-- old Method of picking an option
-
+- N/A
 UPDATED
-- Option Method [Much Much Better]
-- Improved some code
+- Fixed Errs Occuring during scrape (Not defined)
+- CFX-Stats has a dedicated page now! 
 ```
 ## 🔨 Languages Used
 ![PY](https://custom-icon-badges.herokuapp.com/badge/Python-black.svg?logo=python&logoColor=blue)
