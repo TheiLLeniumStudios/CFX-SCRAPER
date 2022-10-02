@@ -41,37 +41,34 @@ def checkStatus(Status, CurrentIssue, CurrentMS):
     else:
         TableStatus['cfxMS'] = "\033[91m" + str(CurrentMS) + "\033[0m"
 
-try:
-    request_get = requests.get('https://status.cfx.re/api/v2/status.json')
-    request_getv2 = requests.get('https://status.cfx.re/metrics-display/1hck2mqcgq3h/day.json')
-    request_getv3 = requests.get('https://runtime.fivem.net/counts.json')
-    convertJson = request_get.json()
-    convertJsonv2 = request_getv2.json()
-    convertJsonv3 = request_getv3.json()
-    TableStatus['cfxTotalPlayers'] = convertJsonv3[0]
-    checkStatus(convertJson['status']['description'], convertJson['status']['indicator'], round(convertJsonv2['summary']['mean'], 0)  )
-except Exception as e:
-    TableStatus['Status'] = "\033[91mFailed To Fetch\033[0m"
-    TableStatus['CurrentIssue'] = "\033[91mErr\033[0m"
-    TableStatus['CurrentMS'] = "\033[91mErr\033[0m"
-
-
 _Logo_ = """
-
-             ██████ ███████ ██   ██    ██████  ███████     ███████  ██████ ██████   █████  ██████  ███████ ██████  
-            ██      ██       ██ ██     ██   ██ ██          ██      ██      ██   ██ ██   ██ ██   ██ ██      ██   ██ 
-            ██      █████     ███      ██████  █████       ███████ ██      ██████  ███████ ██████  █████   ██████  
-            ██      ██       ██ ██     ██   ██ ██               ██ ██      ██   ██ ██   ██ ██      ██      ██   ██ 
-             ██████ ██      ██   ██ ██ ██   ██ ███████     ███████  ██████ ██   ██ ██   ██ ██      ███████ ██   ██       
-                                                                                                  
-                                                Created by K3YOMI@github
-
-                                      [Cfx.re Status] """+TableStatus['cfxStatus']+""" - """+TableStatus['cfxIssue']+"""
-                                            [CnL Self Time] """+str(TableStatus['cfxMS'])+""" milliseconds    
-                                              [Total Online] """+str(round(TableStatus['cfxTotalPlayers']))+""" players                                                                                                               
+     ██████ ███████ ██   ██    ██████  ███████     ███████  ██████ ██████   █████  ██████  ███████ ██████  
+    ██      ██       ██ ██     ██   ██ ██          ██      ██      ██   ██ ██   ██ ██   ██ ██      ██   ██ 
+    ██      █████     ███      ██████  █████       ███████ ██      ██████  ███████ ██████  █████   ██████  
+    ██      ██       ██ ██     ██   ██ ██               ██ ██      ██   ██ ██   ██ ██      ██      ██   ██ 
+     ██████ ██      ██   ██ ██ ██   ██ ███████     ███████  ██████ ██   ██ ██   ██ ██      ███████ ██   ██       
+                                                                                          
+                                        Created by K3YOMI@github
+                         (An advanced analytics tool for the FiveM/RedM Commmunity)
+                                        
 """
 
+
+
 def viewStats():
+    try:
+        request_get = requests.get('https://status.cfx.re/api/v2/status.json')
+        request_getv2 = requests.get('https://status.cfx.re/metrics-display/1hck2mqcgq3h/day.json')
+        request_getv3 = requests.get('https://runtime.fivem.net/counts.json')
+        convertJson = request_get.json()
+        convertJsonv2 = request_getv2.json()
+        convertJsonv3 = request_getv3.json()
+        TableStatus['cfxTotalPlayers'] = convertJsonv3[0]
+        checkStatus(convertJson['status']['description'], convertJson['status']['indicator'], round(convertJsonv2['summary']['mean'], 0)  )
+    except Exception as e:
+        TableStatus['Status'] = "\033[91mFailed To Fetch\033[0m"
+        TableStatus['CurrentIssue'] = "\033[91mErr\033[0m"
+        TableStatus['CurrentMS'] = "\033[91mErr\033[0m"
     try:
         request_get = requests.get('https://status.cfx.re/api/v2/status.json')
         request_getv2 = requests.get('https://status.cfx.re/metrics-display/1hck2mqcgq3h/day.json')
@@ -100,7 +97,9 @@ def viewStats():
         TableStatus['Status'] = "\033[91mFailed To Fetch\033[0m"
         TableStatus['CurrentIssue'] = "\033[91mErr\033[0m"
         TableStatus['CurrentMS'] = "\033[91mErr\033[0m"
+        
     os.system('cls || clear')
+    print(_Logo_)
     print("Last Updated: "+str(datetime.datetime.now()))
     print('\n')
     print(f'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━')
